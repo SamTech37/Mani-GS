@@ -12,8 +12,8 @@ args = parser.parse_args()
 
 # # load_dir and video_save_path
 load_dir = args.imgs_dir
-# WIHTE_BG = True
-WIHTE_BG = False
+# WHITE_BG = True
+WHITE_BG = False
 
 # all images
 imgs = os.listdir(load_dir)
@@ -21,15 +21,18 @@ imgs = [x for x in imgs if x.endswith(".png")]
 # select a view
 view_index = "r_30"
 video_save_path = f"{load_dir}/demo_{view_index}.mp4" 
-imgs = [x for x in imgs if "view_index" in x]
+imgs = [x for x in imgs if view_index in x]
+# print("view_index = ", imgs)
 imgs.sort()
 
 # For not zero padding image name
 imgs = sorted(imgs, key=lambda x: int(x.split('_')[1].split('.')[0]))
 imgs = [imageio.v2.imread(os.path.join(load_dir, f)) for f in imgs]
 
+print(f"Number of images: {len(imgs)}")
+
 # with white background
-if WIHTE_BG:
+if WHITE_BG:
     for img in imgs:
         # print(img.max())
         # img[np.where(img[:, :, 3] < 128)] = [255, 255, 255, 255]
@@ -38,3 +41,4 @@ if WIHTE_BG:
         # img[:, :, 3:] = 255
 
 imageio.mimsave(video_save_path, imgs, fps=10, quality=9)
+print(f"Video saved to {video_save_path}")

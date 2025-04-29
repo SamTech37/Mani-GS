@@ -1,0 +1,7 @@
+
+/datasets
+/output
+**/__pycache__/
+**/build
+ship_30K_ascii.ply
+ship_30K_point_cloud.ply

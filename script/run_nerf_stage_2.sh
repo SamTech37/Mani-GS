@@ -1,7 +1,8 @@
 #!/bin/bash
 
-list="lego"
+# list="lego"
 # list="chair drums ficus hotdog lego materials mic ship"
+list="ficus ship"
 root_dir="datasets/nerf_synthetic/"
 exp_name="3dgs-neus-best-mask-HP10-no-reg"
 
